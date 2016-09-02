@@ -1,0 +1,14 @@
+Solutions:
+
+2. 2
+   nil
+   "Joe"
+   "four"
+   nil
+3. Does not print anything to screen
+5. nil
+6. Method expected a second argument and presumably no default value was
+   provided.
+
+
+

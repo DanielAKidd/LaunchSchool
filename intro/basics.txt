@@ -1,3 +1,5 @@
+Solutions:
+
 1. "Daniel" + " Kidd"
 2. thousands = 3579 / 1000
    hundreds = 3579 % 1000 / 100
@@ -20,7 +22,7 @@
    puts 5.55**2
 7. The interpreter did not know what to do with the closing bracket ')';
    presumably there is no preceding opening bracket '('. As the error msg 
-   suggests Author used the wrong closing bracket on line 16 offending file.
+   suggests the Author used the wrong closing bracket on line 16 of the offending file.
    
 
 

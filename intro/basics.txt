@@ -1,0 +1,35 @@
+1. "Daniel" + " Kidd"
+2. thousands = 3579 / 1000
+   hundreds = 3579 % 1000 / 100
+   tens = 3579 % 1000 % 100 / 10
+   ones = 3579 % 1000 % 100 % 10
+3. movies = {'jaws' => 1975, 'terminator 2' => 1992, 'fight club' => 1999}
+   puts movies['jaws']
+   puts movies['terminator 2']
+   puts movies['fight club']
+4. dates = [1975, 1992, 1999]
+   puts dates[0]
+   puts dates[2]
+   puts dates[1]
+5. puts 7*6*5*4*3*2
+   puts 6*5*4*3*2
+   puts 8*7*6*5*4*3*2*1
+   puts 5*4*3*2
+6. puts 10.5 * 10.5
+   puts 9.764**2
+   puts 5.55**2
+7. The interpreter did not know what to do with the closing bracket ')';
+   presumably there is no preceding opening bracket '('. As the error msg 
+   suggests Author used the wrong closing bracket on line 16 offending file.
+   
+
+
+
+
+
+
+
+
+
+
+

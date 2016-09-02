@@ -1,0 +1,3 @@
+5. First case: x = 3
+   Second case: Error 'x' it is being requested out of scope
+6. 'shoes' is being referenced either out of scope or it is not defined

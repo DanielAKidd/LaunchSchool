@@ -1,3 +1,3 @@
 Launch School
 
-Solutions to Intro To Programming book
+Solutions to the exercises in Intro To Programming book

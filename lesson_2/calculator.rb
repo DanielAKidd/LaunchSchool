@@ -1,14 +1,15 @@
 # A command line calculator
 def calc(n1, n2, op)
-  result = if op == 1
-             n1 + n2
-           elsif op == 2
-             n1 - n2
-           elsif op == 3
-             n1 * n2
-           else
-             n1.to_f / n2.to_f # integers only otherwise
-           end
+  result = case op 
+             when 1
+               n1 + n2
+             when 2
+               n1 - n2
+             when 3 
+               n1 * n2
+             when 4
+               n1.to_f / n2.to_f # integers only otherwise
+  end
   puts "..And the answer is: #{result}"
 end
 

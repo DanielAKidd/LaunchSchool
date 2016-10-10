@@ -18,7 +18,6 @@ end
 def valid_number?
   num = ''
   loop do
-    #
     num = gets.chomp
     break if integer?(num)
     prompt('Oops.. please enter a valid number')

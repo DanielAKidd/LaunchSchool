@@ -5,7 +5,7 @@ def prompt(msg)
 end
 
 def integer?(input)
-  # cannot handle '00' case as 'to_i' meth will return '0'
+  # cannot handle '00' case as 'to_i' method will return '0'
   # despite '00' being legitimate input
   # input.to_i.to_s == input
 
@@ -15,14 +15,23 @@ def integer?(input)
   /^\d+$/.match(input)
 end
 
-def valid_number?
+def float?(input)
+  # checks if digit present then if a single period (decimal point)
+  # is present surrounded by only digits
+  /\d/.match(input) && /^\d*\.?\d*$/.match(input)
+end
+
+def get_number
   num = ''
   loop do
     num = gets.chomp
-    break if integer?(num)
+    if integer?(num)
+      return num.to_i
+    elsif float?(num)
+      return num.to_f
+    end
     prompt('Oops.. please enter a valid number')
   end
-  num.to_i
 end
 
 def calc(n1, n2, op)
@@ -53,9 +62,9 @@ prompt "Hi welcome\nProvide two numbers and a basic operation for a solution"
 loop do # main
   # instructions
   prompt 'what is your first number?'
-  num1 = valid_number?
+  num1 = get_number
   prompt 'what is your second number?'
-  num2 = valid_number?
+  num2 = get_number
 
   operator_prompt = <<-MSG
   What operation would you like to perform:

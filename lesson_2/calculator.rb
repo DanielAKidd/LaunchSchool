@@ -21,7 +21,7 @@ def float?(input)
   /\d/.match(input) && /^\d*\.?\d*$/.match(input)
 end
 
-def get_number
+def fetch_number
   num = ''
   loop do
     num = gets.chomp
@@ -62,9 +62,9 @@ prompt "Hi welcome\nProvide two numbers and a basic operation for a solution"
 loop do # main
   # instructions
   prompt 'what is your first number?'
-  num1 = get_number
+  num1 = fetch_number
   prompt 'what is your second number?'
-  num2 = get_number
+  num2 = fetch_number
 
   operator_prompt = <<-MSG
   What operation would you like to perform:

@@ -34,6 +34,18 @@ def fetch_number
   end
 end
 
+def fetch_operation
+  operator = ''
+  loop do
+    operator = gets.chomp
+    if %w(1 2 3 4).include?(operator)
+      return operator
+    else
+      prompt('must chose 1, 2, 3 or 4')
+    end
+  end
+end
+
 def calc(n1, n2, op)
   operation = ''
   result = case op
@@ -75,20 +87,12 @@ loop do # main
   MSG
   prompt(operator_prompt)
 
-  operator = ''
-  loop do
-    operator = gets.chomp
-    if %w(1 2 3 4).include?(operator)
-      break
-    else
-      prompt('must chose 1, 2, 3 or 4')
-    end
-  end
+  operator = fetch_operation
 
   # invoke our 'calc' method
   calc(num1, num2, operator)
 
-  # check if user wnats another calculation
+  # check if user wants another calculation
   prompt('Enter Y for another calculation')
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')

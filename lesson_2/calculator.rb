@@ -1,3 +1,5 @@
+require_relative 'msg_configuration'
+
 # A command line calculator
 
 def prompt(msg)
@@ -30,7 +32,7 @@ def fetch_number
     elsif float?(num)
       return num.to_f
     end
-    prompt('Oops.. please enter a valid number')
+    prompt MSG_CONFIG[:num_fail]
   end
 end
 
@@ -41,62 +43,71 @@ def fetch_operation
     if %w(1 2 3 4).include?(operator)
       return operator
     else
-      prompt('must chose 1, 2, 3 or 4')
+      prompt MSG_CONFIG[:op_fail]
     end
   end
 end
 
+def operation_to_msg(op)
+  msg = case op
+        when '1'
+          'Adding'
+        when '2'
+          'Subtracting'
+        when '3'
+          'Multiplying'
+        when '4'
+          'Dividing'
+        end
+  # by using the return value from case we have more control over this
+  # method's return value
+  msg
+end
+
 def calc(n1, n2, op)
-  operation = ''
   result = case op
            when '1'
-             operation = 'Adding'
              n1 + n2
            when '2'
-             operation = 'Subtracting'
              n1 - n2
            when '3'
-             operation = 'Multiplying'
              n1 * n2
            when '4'
-             operation = 'Dividing'
-             n1.to_f / n2.to_f # integers only otherwise
+             n1 / n2
            end
-  prompt "We are #{operation} #{n1} by #{n2}"
-  prompt "..And the answer is: #{result}"
+  result
 end
 
 ###
 
-# intro message
-prompt "Hi welcome\nProvide two numbers and a basic operation for a solution"
+# welcome message
+prompt MSG_CONFIG[:welcome]
 
 loop do # main
-  # instructions
-  prompt 'what is your first number?'
+  # get numbers from user
+  prompt MSG_CONFIG[:num_prompt1]
   num1 = fetch_number
-  prompt 'what is your second number?'
+  prompt MSG_CONFIG[:num_prompt2]
   num2 = fetch_number
 
-  operator_prompt = <<-MSG
-  What operation would you like to perform:
-  1) Addition
-  2) Subtraction
-  3) Multiplication
-  4) Division
-  MSG
-  prompt(operator_prompt)
+  # get math operation from user
+  prompt MSG_CONFIG[:op_prompt]
+  op = fetch_operation
+  operation = operation_to_msg(op)
 
-  operator = fetch_operation
+  # display operation
+  prompt display_op(operation, num1, num2)
 
-  # invoke our 'calc' method
-  calc(num1, num2, operator)
+  # calculate result
+  result = calc(num1, num2, op)
+  # display calculation
+  prompt display_calc(result)
 
   # check if user wants another calculation
-  prompt('Enter Y for another calculation')
+  prompt MSG_CONFIG[:replay]
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
 
 # goodbye message
-prompt('Farewell')
+prompt MSG_CONFIG[:goodbye]

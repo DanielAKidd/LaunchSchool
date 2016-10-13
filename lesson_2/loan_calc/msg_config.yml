@@ -1,0 +1,9 @@
+welcome: "Welcome"
+loan_amount_prompt: "What is the total loan amount"
+apr_prompt: 'What is the APR. Example: 18.2% => 18.2'
+loan_duration_prompt: 'How long is the loan for? [Input in years only]'
+duration_fail: 'Enter loan duration in years only'
+apr_fail: 'Example input: 35 percent => 35'
+num_fail: 'Oops.. please enter a valid number. you can include a decimal point'
+replay: 'Enter Y for another calculation'
+goodbye: 'Farewell'

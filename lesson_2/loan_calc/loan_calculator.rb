@@ -62,9 +62,6 @@ def calc_monthly_payments(p, j, n)
   r.round(2)
 end
 
-def display
-end
-
 # MSG: welcome
 prompt MESSAGES['welcome']
 

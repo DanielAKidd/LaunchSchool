@@ -1,0 +1,7 @@
+welcome: "Hi welcome\nProvide two numbers and a basic operation for a solution"
+num_prompt1: 'what is your first number?'
+num_prompt2: 'what is your second number?'
+op_fail: 'must chose 1, 2, 3 or 4'
+num_fail: 'Oops.. please enter a valid number'
+replay: 'Enter Y for another calculation'
+goodbye: 'Farewell'

@@ -1,4 +1,5 @@
-require_relative 'msg_configuration'
+require 'yaml'
+MESSAGES = YAML.load_file('msg_config.yml')
 
 # A command line calculator
 
@@ -32,7 +33,7 @@ def fetch_number
     elsif float?(num)
       return num.to_f
     end
-    prompt MSG_CONFIG[:num_fail]
+    prompt MESSAGES['num_fail']
   end
 end
 
@@ -43,7 +44,7 @@ def fetch_operation
     if %w(1 2 3 4).include?(operator)
       return operator
     else
-      prompt MSG_CONFIG[:op_fail]
+      prompt MESSAGES['op_fail']
     end
   end
 end
@@ -64,6 +65,14 @@ def operation_to_msg(op)
   msg
 end
 
+def display_op(op, num1, num2)
+  "We are #{op} #{num1} by #{num2}"
+end
+
+def display_calc(result)
+  "..And the answer is: #{result}"
+end
+
 def calc(n1, n2, op)
   result = case op
            when '1'
@@ -81,17 +90,24 @@ end
 ###
 
 # welcome message
-prompt MSG_CONFIG[:welcome]
+prompt MESSAGES['welcome']
 
 loop do # main
   # get numbers from user
-  prompt MSG_CONFIG[:num_prompt1]
+  prompt MESSAGES['num_prompt1']
   num1 = fetch_number
-  prompt MSG_CONFIG[:num_prompt2]
+  prompt MESSAGES['num_prompt2']
   num2 = fetch_number
 
   # get math operation from user
-  prompt MSG_CONFIG[:op_prompt]
+  op_prompt = <<-MSG
+  What operation would you like to perform:
+  1) Addition
+  2) Subtraction
+  3) Multiplication
+  4) Division
+  MSG
+  prompt op_prompt
   op = fetch_operation
   operation = operation_to_msg(op)
 
@@ -104,10 +120,10 @@ loop do # main
   prompt display_calc(result)
 
   # check if user wants another calculation
-  prompt MSG_CONFIG[:replay]
+  prompt MESSAGES['replay']
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
 
 # goodbye message
-prompt MSG_CONFIG[:goodbye]
+prompt MESSAGES['goodbye']
